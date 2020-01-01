@@ -1,0 +1,34 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.grid {
+  width: 630px;
+  height: 630px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div.grid-item {
+  width: 30px;
+  height: 30px;
+  border: 1px solid grey;
+}
+
+div.grid-item.snake {
+  background-color: black;
+  background-repeat: repeat;
+  background-size: contain;
+}
