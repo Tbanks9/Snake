@@ -32,3 +32,9 @@ div.grid-item.snake {
   background-repeat: repeat;
   background-size: contain;
 }
+
+.food {
+  background-color: red;
+  background-repeat: repeat;
+  background-size: contain;
+}

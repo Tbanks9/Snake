@@ -2,56 +2,14 @@ function init() {
   //!  dom variables
   const grid = document.querySelector('.grid')
   const squares = []
-  // let snake = [squares[213], squares[214], squares[215]]
-  // const squares = document.querySelectorAll('.squares')
-  // const cell = document.createElement('div')
-  // cell.classList.add('cell')
 
   //! game variables
   const width = 21
-  let playerIndex = 215
+  let playerIndex = [215, 214, 213]
   let snakeUp
   let snakeRight
   let snakeDown
   let snakeLeft
-
-  function clear() {
-    clearInterval(snakeUp)
-    clearInterval(snakeRight)
-    clearInterval(snakeDown)
-    clearInterval(snakeLeft)
-  }
-
-  function move(e) {
-    if (e.keyCode === 39) {
-      clear()
-      snakeRight = setInterval(moveRight, 1000)
-    } else if (e.keyCode === 37) {
-      clear()
-      snakeLeft = setInterval(moveLeft, 1000)
-    } else if (e.keyCode === 40) {
-      clear()
-      snakeDown = setInterval(moveDown, 1000)
-    } else if (e.keyCode === 38) {
-      clear()
-      snakeUp = setInterval(moveUp, 1000)
-    }
-  }
-
-  const square = document.createElement('div')
-  function moveRight() {
-    square.classList.add('snake')
-    console.log('move right')
-  }
-  function moveLeft() {
-    console.log('move left')
-  }
-  function moveDown() {
-    console.log('move down')
-  }
-  function moveUp() {
-    console.log('move up')
-  }
 
   // loop as many times as width times the width to fill the grid
   Array(width * width).join('.').split('.').forEach(() => {
@@ -62,45 +20,87 @@ function init() {
     grid.appendChild(square)
   })
 
+  function clear() {
+    clearInterval(snakeUp)
+    clearInterval(snakeRight)
+    clearInterval(snakeDown)
+    clearInterval(snakeLeft)
+  }
+
+  // if gameStart, food index is 220
+  // else, food is randomly generated
+  // if food classlist contains snake classlist, console log "food eaten"
+  // food()
+  // function food() {
+  //   Math.floor(Math.random() * 440)
+  //   squares.classList('food')
+  //   console.log('food')
+  // }
+
   // places snake at the starting position when grid has finished building
   squares[playerIndex].classList.add('snake')
-  function handleKeyDown(e) {
-    switch (e.keyCode) {
-      case 39:
-        if (playerIndex % width < width - 1) {
-          playerIndex++
-        }
-        break
-      case 37:
-        if (playerIndex % width > 0) {
-          playerIndex--
-        }
-        break
-      case 40:
-        if (playerIndex + width < width * width) {
-          playerIndex += width
-        }
-        break
-      case 38:
-        if (playerIndex - width >= 0) {
-          playerIndex -= width
-        }
-        break
-      default:
-        console.log('player shouldnt move')
+  function move(e) {
+    if (e.keyCode === 39 && playerIndex % width < width - 1) {
+      clear()
+      snakeRight = setInterval(moveRight, 200)
+    } else if (e.keyCode === 37 && playerIndex % width > 0) {
+      clear()
+      snakeLeft = setInterval(moveLeft, 200)
+    } else if (e.keyCode === 40 && playerIndex + width < width * width) {
+      clear()
+      snakeDown = setInterval(moveDown, 200)
+    } else if (e.keyCode === 38 && playerIndex - width >= 0) {
+      clear()
+      snakeUp = setInterval(moveUp, 200)
     }
     squares.forEach(square => square.classList.remove('snake'))
     squares[playerIndex].classList.add('snake')
     console.log('current snake index is', playerIndex)
   }
 
+  function moveRight() {
+    playerIndex++
+    squares.forEach(square => square.classList.remove('snake'))
+    squares[playerIndex].classList.add('snake')
+    console.log('move right')
+    console.log('current snake index is', playerIndex)
+  }
+
+  function moveLeft() {
+    playerIndex--
+    squares.forEach(square => square.classList.remove('snake'))
+    squares[playerIndex].classList.add('snake')
+    console.log('move left')
+    console.log('current snake index is', playerIndex)
+  }
+
+  function moveDown() {
+    playerIndex += width
+    squares.forEach(square => square.classList.remove('snake'))
+    squares[playerIndex].classList.add('snake')
+    console.log('move down')
+    console.log('current snake index is', playerIndex)
+  }
+
+  function moveUp() {
+    playerIndex -= width
+    squares.forEach(square => square.classList.remove('snake'))
+    squares[playerIndex].classList.add('snake')
+    console.log('move up')
+    console.log('current snake index is', playerIndex)
+  }
+
   // function gameStart() {
+  //   if (squares === playerIndex) {
+  //     console.log('gamestart')
+  //   }
   // }
+  // TODO: 
 
   //! event handlers
-  window.addEventListener('keydown', handleKeyDown)
   window.addEventListener('keydown', move)
-
+  // window.addEventListener('keydown', gameStart)
+  // window.addEventListener('keydown', food)
 }
 window.addEventListener('DOMContentLoaded', init)
 
@@ -108,9 +108,9 @@ window.addEventListener('DOMContentLoaded', init)
 
 // TODO: snake
 // snake starts being 3 squares long
-// snake moves forward by itself
+// snake moves forward by itself by pressing arrow keys
 // snake's direction is controlled using arrow keys
-// snake grows one square everytime it eats
+// snake grows one square everytime it eats food
 // snake speeds up everytime it eats
 
 // TODO: snakeFood
