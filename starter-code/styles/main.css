@@ -33,7 +33,7 @@ div.grid-item.snake {
   background-size: contain;
 }
 
-.food {
+div.grid-item.food {
   background-color: red;
   background-repeat: repeat;
   background-size: contain;
