@@ -6,8 +6,8 @@ function init() {
 
   //! Game variables
   const width = 21
-  // let playerIndex = [215, 214, 213] //TODO: for three-squared snake
   let playerIndex = 215
+  let snakeArray = [playerIndex, 214, 213]
   const foodStartIndex = 220
   let snakeUp
   let snakeRight
@@ -30,13 +30,13 @@ function init() {
     clearInterval(snakeLeft)
   }
 
-  function play() {
-    for (var i = 0; i < playerIndex.length; i++) {
-      playerIndex[i].classList.add('inplay')
-    }
-  }
+  // function play() {
+  //   for (var i = 0; i < snakeArray.length; i++) {
+  //     snakeArray[i].classList.add('inplay')
+  //   }
+  // }
 
-  play()
+  // play()
 
   for (let i = 0; i < squares.length; i += 21) {
     squares[i].classList.add('leftWall')
@@ -51,10 +51,9 @@ function init() {
   function gameOver() {
   }
 
-
   // places snake at the starting position when grid has finished building
-  // playerIndex.forEach(index => squares[index].classList.add('snake')) //TODO: adds a three-square snake
-  squares[playerIndex].classList.add('snake')
+  // squares[snakeArray].classList.add('snake')
+  snakeArray.forEach(body => squares[body].classList.add('snake')) //TODO: adds a three-square snake
   function move(e) {
     if (e.keyCode === 39 && playerIndex % width < width - 1) {
       clear()
@@ -74,23 +73,16 @@ function init() {
       console.log('move up')
     }
     squares.forEach(square => square.classList.remove('snake'))
-    squares[playerIndex].classList.add('snake')
-    // playerIndex.forEach(index => squares[index].classList.add('snake'))
-    // playerIndex.classList.add('snake')
+    snakeArray.forEach(body => squares[body].classList.add('snake'))
   }
 
   function moveRight() {
-    playerIndex++
+    snakeArray++
     squares.forEach(square => square.classList.remove('snake'))
-    squares[playerIndex].classList.add('snake')
-    const tail = 0
-    for (let i = 0; i < squares[tail].length - 1; i++) {
-      this.tail[i] = this.tail[i + 1]
-    }
+    snakeArray.forEach(body => squares[body].classList.add('snake'))
     if (squares[playerIndex].classList.contains('food')) {
       console.log('food eaten')
       squares[playerIndex].classList.remove('food')
-      squares.push(playerIndex.tail)
       food()
     } if (squares[playerIndex].classList.contains('rightWall')) {
       console.log('gameover')
@@ -98,6 +90,26 @@ function init() {
     }
     console.log('current snake index is', playerIndex)
   }
+
+  // function moveRight() {
+  //   playerIndex++
+  //   squares.forEach(square => square.classList.remove('snake'))
+  //   squares[playerIndex].classList.add('snake')
+  //   const tail = 0
+  //   for (let i = 0; i < squares[tail].length - 1; i++) {
+  //     this.tail[i] = this.tail[i + 1]
+  //   }
+  //   if (squares[playerIndex].classList.contains('food')) {
+  //     console.log('food eaten')
+  //     squares[playerIndex].classList.remove('food')
+  //     squares.push(playerIndex.tail)
+  //     food()
+  //   } if (squares[playerIndex].classList.contains('rightWall')) {
+  //     console.log('gameover')
+  //     clear()
+  //   }
+  //   console.log('current snake index is', playerIndex)
+  // }
 
   function moveLeft() {
     playerIndex--
