@@ -13,6 +13,7 @@ function init() {
   let snakeRight
   let snakeDown
   let snakeLeft
+  let interval = 250
 
   // loop as many times as width times the width to fill the grid
   Array(width * width).join('.').split('.').forEach(() => {
@@ -49,6 +50,9 @@ function init() {
   }
 
   // function gameOver() {
+  //   if (squares[snakeArray[0]].classList.contains(snakeArray.length - 1)) {
+  //     clear()
+  //   }
   // }
 
   // places snake at the starting position when grid has finished building
@@ -56,19 +60,19 @@ function init() {
   function move(e) {
     if (e.keyCode === 39) { // && playerIndex % width < width - 1
       clear()
-      snakeRight = setInterval(moveRight, 200)
+      snakeRight = setInterval(moveRight, interval)
       console.log('move right')
     } else if (e.keyCode === 37) { // && playerIndex % width > 0
       clear()
-      snakeLeft = setInterval(moveLeft, 200)
+      snakeLeft = setInterval(moveLeft, interval)
       console.log('move left')
     } else if (e.keyCode === 40) { // && playerIndex + width < width * width
       clear()
-      snakeDown = setInterval(moveDown, 200)
+      snakeDown = setInterval(moveDown, interval)
       console.log('move down')
     } else if (e.keyCode === 38) { // && playerIndex - width >= 0
       clear()
-      snakeUp = setInterval(moveUp, 200)
+      snakeUp = setInterval(moveUp, interval)
       console.log('move up')
     }
   }
@@ -80,9 +84,19 @@ function init() {
     snakeArray.unshift(snakeArray[0] + 1)
     snakeArray.map(index => squares[index].classList.add('snake'))
     console.log(snakeArray[0])
-    if (squares[snakeArray[0]].classList.contains('food')) {
+    for (let i = 3; i < snakeArray.length; i++) {
+      const head = snakeArray[0]
+      const body = snakeArray[i]
+      if (head === body) {
+        console.log('snake hit')
+        clear()
+      }
+    } if (squares[snakeArray[0]].classList.contains('food')) {
       console.log('food eaten')
       console.log(squares[snakeArray[0]])
+      console.log('snake speed up')
+      interval = (interval - 1)
+      console.log(interval)
       squares[snakeArray[0]].classList.remove('food')
       snakeArray.push(snakeArray.length)
       food()
@@ -98,9 +112,18 @@ function init() {
     snakeArray.unshift(snakeArray[0] - 1)
     snakeArray.map(index => squares[index].classList.add('snake'))
     console.log(snakeArray[0])
+    for (let i = 3; i < snakeArray.length; i++) {
+      const head = snakeArray[0]
+      const body = snakeArray[i]
+      if (head === body) {
+        console.log('snake hit')
+        clear()
+      }
+    }
     if (squares[snakeArray[0]].classList.contains('food')) {
       console.log('food eaten')
       console.log(squares[snakeArray[0]])
+      interval = (interval - 1)
       squares[snakeArray[0]].classList.remove('food')
       snakeArray.push(snakeArray.length)
       food()
@@ -116,13 +139,22 @@ function init() {
     snakeArray.unshift(snakeArray[0] + width)
     snakeArray.map(index => squares[index].classList.add('snake'))
     console.log(snakeArray[0])
+    for (let i = 3; i < snakeArray.length; i++) {
+      const head = snakeArray[0]
+      const body = snakeArray[i]
+      if (head === body) {
+        console.log('snake hit')
+        clear()
+      }
+    }
     if (squares[snakeArray[0]].classList.contains('food')) {
       console.log('food eaten')
       console.log(squares[snakeArray[0]])
+      interval = (interval - 1)
       squares[snakeArray[0]].classList.remove('food')
       snakeArray.push(snakeArray.length)
       food()
-    } if (squares[snakeArray[0]].classList.contains('bottomWall')) {
+    }  if (squares[snakeArray[0]].classList.contains('bottomWall')) {
       console.log('gameover')
       clear()
     }
@@ -134,9 +166,18 @@ function init() {
     snakeArray.unshift(snakeArray[0] - width)
     snakeArray.map(index => squares[index].classList.add('snake'))
     console.log(snakeArray[0])
+    for (let i = 3; i < snakeArray.length; i++) {
+      const head = snakeArray[0]
+      const body = snakeArray[i]
+      if (head === body) {
+        console.log('snake hit')
+        clear()
+      }
+    }
     if (squares[snakeArray[0]].classList.contains('food')) {
       console.log('food eaten')
       console.log(squares[snakeArray[0]])
+      interval = (interval - 1)
       squares[snakeArray[0]].classList.remove('food')
       snakeArray.push(snakeArray.length)
       food()
@@ -156,35 +197,23 @@ function init() {
     }
   }
 
-  // if (!squares[ranNum].classList.contains('snake')) {
-  // } else if (squares[ranNum].classList.contains('snake')) {
-  // ranNum = Math.floor(Math.random() * 440)
-
-  // if gameStart, food index is 220
-  // else, food is randomly generated
-  // if food classlist contains snake classlist, console log "food eaten"
-  // Math.floor(Math.random() * 440)
-
-  // function food() {
-  //   Math.floor(Math.random() * 440)
-  //   if (!playerIndex.classList.contains('inplay')) {
-  //     squares.classList.add('food')
-  //   } else if (squares.classList.contains('inplay')) {
-  //     console.log('hey')
-  //     Math.floor(Math.random() * 440)
-  //     food()
+  // function snakeSpeedUp() {
+  //   if (squares[snakeArray[0]].classList.contains('food')) {
+  //     console.log('snake speed up')
+  //     snakeRight--
   //   }
   // }
-  // food()
+  // snakeSpeedUp()
 
   // function gameStart() {
   //   if (squares === playerIndex) {
   //     console.log('gamestart')
   //   }
   // }
+
   // TODO: 
 
-  //! event handlers
+  //! EVENT HANDLERS
   window.addEventListener('keydown', move)
 }
 window.addEventListener('DOMContentLoaded', init)
@@ -192,19 +221,9 @@ window.addEventListener('DOMContentLoaded', init)
 //! PSEUDOCODE
 
 // TODO: snake
-// snake starts being 3 squares long
-//// snake moves forward by itself by pressing arrow keys
-//// snake's direction is controlled using arrow keys
-// snake grows one square everytime it eats food
 // snake speeds up everytime it eats
 
 // TODO: snakeFood
-// appears on random square as game starts
-// each time snake eats one, it adds length to the snake
-//// each time snake eats one, the square loses its value
-//// food appears on another random square
-
-
 
 // TODO: gameOver
 // Displays 'gameover' message 
@@ -218,6 +237,4 @@ window.addEventListener('DOMContentLoaded', init)
 // Display gameOver
 
 //! Game rules
-// Snake cannot hit the border (Game ends there)
-// Snake cannot hit itself
 // It's 10 points each time the snake eats something

@@ -10,11 +10,34 @@ html, body {
 
 body {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+div.snake1-container {
+  width: 515px;
+  height: 515px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
 }
 
 div.grid {
+  width: 504px;
+  height: 504px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div.grid-item {
+  width: 24px;
+  height: 24px;
+  border: 1px solid grey;
+}
+
+/* div.grid {
   width: 630px;
   height: 630px;
   display: flex;
@@ -25,7 +48,7 @@ div.grid-item {
   width: 30px;
   height: 30px;
   border: 1px solid grey;
-}
+} */
 
 div.grid-item.snake {
   background-color: black;
