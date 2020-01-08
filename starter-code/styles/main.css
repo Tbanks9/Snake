@@ -8,56 +8,159 @@ html, body {
   height: 100vh;
 }
 
+h1 {
+  font-family: 'Audiowide', cursive;
+  font: bolder;
+  font-size: 80px;
+  margin: 10px;
+}
+
 body {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
 div.snake1-container {
-  width: 515px;
-  height: 515px;
+  width: 650px;
+  height: 650px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
+  align-items: center;
+  position: relative;
+  padding: 0 20px 0 20px;
 }
 
 div.grid {
-  width: 504px;
-  height: 504px;
+  width: 520px;
+  height: 520px;
   display: flex;
   flex-wrap: wrap;
+  border: darksalmon 5px solid;
+  border-radius: 10px;
 }
 
 div.grid-item {
-  width: 24px;
-  height: 24px;
-  border: 1px solid grey;
+  width: 34px;
+  height: 34px;
+  /* border: 1px solid grey; */
+  background-color: darksalmon;
 }
 
-/* div.grid {
-  width: 630px;
-  height: 630px;
+div.game-over {
+  width: 400px;
+  height: 200px;
+  background-color: greenyellow;
+  border-right: black solid 10px;
+  border-bottom: black solid 10px;
+  border-radius: 5mm;
+  position: absolute;
+  text-align: center;
+  display: none; 
+  padding-top: 30px;
+}
+
+h2 {
+  font-family: 'Audiowide', cursive;
+  color: #F9F8F8;
+  font-size: 40px;
+  margin: 0;
+}
+
+div.score-tally {
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 10px;
+  width: 515px;
+  height: 100px;
+  font-family: 'Audiowide', cursive;
+  color: black;
+  font-size: 30px;
+  font-weight: 1000;
 }
 
-div.grid-item {
-  width: 30px;
-  height: 30px;
-  border: 1px solid grey;
-} */
+button.play-again {
+  background-color: greenyellow;
+  font-family: 'Audiowide', cursive;
+  color: black;
+  font-weight: 1000;
+  font-size: 20px;
+  box-shadow: 9px 9px 9px #999;
+  border-radius: 2mm;
+  width: 150px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  outline: none;
+}
+
+button.play-again:hover {background-color: #3e8e41}
+
+button.play-again:active {
+  background-color: #3e8e41;
+  box-shadow: 5px 5px 5px #666;
+  transform: translateY(4px);
+}
+
+button.pause-game {
+  background-color: greenyellow;
+  font-family: 'Audiowide', cursive;
+  color: black;
+  font-weight: 1000;
+  font-size: 20px;
+  border-radius: 3mm;
+  width: 220px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: 9px 9px 9px #999;
+  cursor: pointer;
+  outline: none;
+  display: block;
+}
+
+button.pause-game:hover {background-color: #3e8e41}
+
+button.pause-game:active {
+  background-color: #3e8e41;
+  box-shadow: 5px 5px 5px #666;
+  transform: translateY(4px);
+}
+
+div.paused {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 10px;
+  width: 515px;
+  height: 300px;
+  font-family: 'Audiowide', cursive;
+  color: white;
+  font-size: 25px;
+  font-weight: 1000;
+  position: absolute;
+  text-align: center;
+  display: none;
+}
+
+p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
 div.grid-item.snake {
   background-color: black;
-  background-repeat: repeat;
-  background-size: contain;
+  border: dimgrey solid 2px;
+  background-repeat: round;
+  background-size: 1px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 div.grid-item.food {
-  background-color: red;
-  background-repeat: repeat;
-  background-size: contain;
+  background-image: url ('assets/food.png');
+  background-repeat: no-repeat;
+  background-size: auto;
 }
