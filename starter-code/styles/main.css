@@ -19,6 +19,7 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
+  background-color: #A3B18A;
 }
 
 div.snake1-container {
@@ -30,7 +31,7 @@ div.snake1-container {
   align-content: center;
   align-items: center;
   position: relative;
-  padding: 0 20px 0 20px;
+  /* background-color: #3A5A40; */
 }
 
 div.grid {
@@ -38,15 +39,16 @@ div.grid {
   height: 520px;
   display: flex;
   flex-wrap: wrap;
-  border: darksalmon 5px solid;
+  border: #3A5A40 5px solid;
   border-radius: 10px;
+  background-color: #3A5A40;
 }
 
 div.grid-item {
   width: 34px;
   height: 34px;
   /* border: 1px solid grey; */
-  background-color: darksalmon;
+  background-color: #3A5A40;
 }
 
 div.game-over {
@@ -68,6 +70,13 @@ h2 {
   font-size: 40px;
   margin: 0;
 }
+
+/* div.game-over.snakey {
+  background-color: greenyellow;
+  background-image: url('../assets/game-over.png');
+  height: 50px;
+  width: 10px;
+} */
 
 div.score-tally {
   display: flex;
@@ -151,16 +160,19 @@ p {
 }
 
 div.grid-item.snake {
-  background-color: black;
-  border: dimgrey solid 2px;
-  background-repeat: round;
-  background-size: 1px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  background-repeat: no-repeat;
+  background: black;
+  border: #3A5A40 solid 1px;
+  border-radius: 10px;
 }
 
 div.grid-item.food {
-  background-image: url ('assets/food.png');
+  background-image: url('../assets/food.png');
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: contain;
+}
+
+div.grid-item.grass {
+  background-image: url('../assets/grass.png');
+  background-size: contain;
 }

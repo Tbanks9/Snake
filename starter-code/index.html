@@ -4,16 +4,27 @@
 <head>
   <meta charset="utf-8">
   <title>WDI Project 1 - snake</title>
-  <script type="text/javascript" src="scripts/snake1.js"></script>
+  <script type="text/javascript" src="scripts/snake1.js" src="scripts/snake2.js"></script>
   <link rel="stylesheet" href="styles/main.css">
   <link href="https://fonts.googleapis.com/css?family=Audiowide&display=swap" rel="stylesheet">
-  
 </head>
 
 <body>
   <h1>snake</h1>
+  <div class="leader-board-submit">
+    <form>
+      <div class="username">
+        <input type="text" name="userName" placeholder="Username">
+      </div>
+      <div class="username-submit">
+          <button type="submit" formaction="">Enter</button>
+        </div>
+    </form>
+  </div>
   <div class="snake1-container">
     <div class="game-over">
+      <div class="snakey">
+      </div>
       <h2>GAME-OVER<h2>
           <button class="play-again">
             <p>Play again?</p>
@@ -22,8 +33,8 @@
     <div class="grid">
     </div>
     <div class="paused">
-        <p>Press any arrow key to resume</p>
-      </div>
+      <p>Press any arrow key to resume</p>
+    </div>
     <div class="score-tally">
       <div class="tally">
       </div>

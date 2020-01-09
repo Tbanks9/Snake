@@ -10,6 +10,7 @@ function init() {
 
   //! Game variables
   const width = 15
+  // const biteSound = 'sounds/bite.wav'
   let playerIndex = 108
   let snakeArray = [playerIndex, 107, 106]
   let foodStartIndex = 112
@@ -19,13 +20,20 @@ function init() {
   let snakeLeft
   let interval = 150
   let scoreTally = 0
+
+  // let storedHighScore = localStorage.getItem('storedHighScore') ? JASON.parse(localStorage.getItem('storedHighScore'))
+  // variables for High Score
+  // const.highScores = documnet.querySelector('.high-scores')
+  // const
+
+  // Set game displays to 'none'
+  // set leader board to 
   // let highscoreList = [
   //   { position: null, name: '', score: [] },
   //   { position: null, name: '', score: [] },
   //   { position: null, name: '', score: [] },
   //   { position: null, name: '', score: [] }
   // ]
-
 
   // loop as many times as width times the width to fill the grid
   Array(width * width).join('.').split('.').forEach(() => {
@@ -113,6 +121,7 @@ function init() {
   }
   squares[foodStartIndex].classList.add('food')
   score.innerHTML = 'Score:' + ' ' + (scoreTally)
+  // grass()
 
   function snakeSpeedUp() {
     console.log('snake speed up')
@@ -125,48 +134,53 @@ function init() {
     score.innerHTML = 'Score:' + ' ' + (scoreTally += 10)
     squares[snakeArray[0]].classList.remove('food')
     snakeArray.push(snakeArray.length)
+    // biteSound.play()
     food()
   }
 
   function moveRight() {
-    squares.map(square => square.classList.remove('snake'))
-    snakeArray.pop()
-    snakeArray.unshift(snakeArray[0] + 1)
-    snakeArray.map(index => squares[index].classList.add('snake'))
-    console.log(snakeArray[0])
-    for (let i = 3; i < snakeArray.length; i++) {
-      const head = snakeArray[0]
-      const body = snakeArray[i]
-      if (head === body) {
-        console.log('snake hit')
-        gameOver()
-      }
-    } if (squares[snakeArray[0]].classList.contains('food')) {
-      foodEaten()
-      snakeSpeedUp()
-    } if (squares[snakeArray[1]].classList.contains('rightWall')) {
+    if (squares[snakeArray[0]].classList.contains('rightWall')) {
       gameOver()
+    } else {
+      squares.map(square => square.classList.remove('snake'))
+      snakeArray.pop()
+      snakeArray.unshift(snakeArray[0] + 1)
+      snakeArray.map(index => squares[index].classList.add('snake'))
+      console.log(snakeArray[0])
+      for (let i = 3; i < snakeArray.length; i++) {
+        const head = snakeArray[0]
+        const body = snakeArray[i]
+        if (head === body) {
+          console.log('snake hit')
+          gameOver()
+        }
+      } if (squares[snakeArray[0]].classList.contains('food')) {
+        foodEaten()
+        snakeSpeedUp()
+      } 
     }
   }
 
   function moveLeft() {
-    squares.map(square => square.classList.remove('snake'))
-    snakeArray.pop()
-    snakeArray.unshift(snakeArray[0] - 1)
-    snakeArray.map(index => squares[index].classList.add('snake'))
-    console.log(snakeArray[0])
-    for (let i = 3; i < snakeArray.length; i++) {
-      const head = snakeArray[0]
-      const body = snakeArray[i]
-      if (head === body) {
-        console.log('snake hit')
-        gameOver()
-      }
-    } if (squares[snakeArray[0]].classList.contains('food')) {
-      foodEaten()
-      snakeSpeedUp()
-    } if (squares[snakeArray[1]].classList.contains('leftWall')) {
+    if (squares[snakeArray[0]].classList.contains('leftWall')) {
       gameOver()
+    } else {
+      squares.map(square => square.classList.remove('snake'))
+      snakeArray.pop()
+      snakeArray.unshift(snakeArray[0] - 1)
+      snakeArray.map(index => squares[index].classList.add('snake'))
+      console.log(snakeArray[0])
+      for (let i = 3; i < snakeArray.length; i++) {
+        const head = snakeArray[0]
+        const body = snakeArray[i]
+        if (head === body) {
+          console.log('snake hit')
+          gameOver()
+        }
+      } if (squares[snakeArray[0]].classList.contains('food')) {
+        foodEaten()
+        snakeSpeedUp()
+      }
     }
   }
 
@@ -219,12 +233,25 @@ function init() {
   function food() {
     const foodGenerator = Math.floor(Math.random() * 225)
     if (!squares[foodGenerator].classList.contains('snake')) {
-      squares[foodGenerator].classList.toggle('food')
+      squares[foodGenerator].classList.add('food')
     } else {
       foodGenerator
       food()
     }
   }
+
+  // function grass() {
+  //   const randomGrass = new Set()
+  //   while (randomGrass.size < 40) {
+  //     const grassGenerator = Math.floor(Math.random() * 225)
+  //     randomGrass.add(grassGenerator)
+  //     if (!squares[grassGenerator].classList.contains('food')) {
+  //       squares[grassGenerator].classList.add('grass')
+  //     } else {
+  //       grassGenerator
+  //     }
+  //   }
+  // }
 
   //! EVENT HANDLERS
   window.addEventListener('keydown', move)
