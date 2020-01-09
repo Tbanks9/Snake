@@ -6,11 +6,12 @@ function init() {
   const loser = document.querySelector('.game-over')
   const pausePlay = document.querySelector('.pause-game')
   const paused = document.querySelector('.paused')
+  const eachScore = document.querySelector('.highScoreList')
   const squares = []
 
   //! Game variables
   const width = 15
-  // const biteSound = 'sounds/bite.wav'
+  const biteSound = new Audio('sounds/bite.wav')
   let playerIndex = 108
   let snakeArray = [playerIndex, 107, 106]
   let foodStartIndex = 112
@@ -21,23 +22,55 @@ function init() {
   let interval = 150
   let scoreTally = 0
 
-  // let storedHighScore = localStorage.getItem('storedHighScore') ? JASON.parse(localStorage.getItem('storedHighScore'))
-  // variables for High Score
-  // const.highScores = documnet.querySelector('.high-scores')
-  // const
+  //! Create your variables to get your data from local storage 
 
-  // Set game displays to 'none'
-  // set leader board to 
-  // let highscoreList = [
+  // The first one allows you to get the data from local storage so that you can manipulate it however you need to and returns null if there is no data available in local storage
+  let storedHighScore = localStorage.getItem('storedHighScore') ? JSON.parse(localStorage.getItem('storedHighScore')) : null
+
+  // The second one gives you a copy of that data which you can display in the browser however you choose to
+  const data = JSON.parse(localStorage.getItem('storedHighScore'))
+
+  // Function to set up your page to display your high score  
+  function highScoreCreate() {
+    const highScore = document.createElement('div')
+    highScore.classList.add('high-score')
+    highScore.innerHTML = storedHighScore
+    eachScore.appendChild(highScore)
+  }
+
+  // Function to store your score into local storage - it's up to you at what point in the game to call this function
+  function storeScores() {
+    if (scoreTally > storedHighScore) { // if the current points value is higher than the value stored in local storage
+      storedHighScore = scoreTally // assign storedHighScore to equal the current value of points
+      localStorage.setItem('storedHighScore', JSON.stringify(storedHighScore)) // set storedHighScore into local storage
+      // this is a key value pair - you are setting the key above and then giving it the value of your latest high score
+      highScoreCreate() // this will enable you to display the score immediately if needed
+    }
+  }
+  // Create a function to check if there is any data in local storage when the page is loaded, if so - 
+  // display this data using the highScoreCreate function, otherwise - do nothing.
+  // Invoke this function immediately so that it is run as soon as the DOM content is loaded   
+  function displayHighScore() {
+    data ? highScoreCreate(data) : null
+  }
+  displayHighScore()
+
+  // let highScoreList = [
+  //   { position: null, name: '', score: [] },
+  //   { position: null, name: '', score: [] },
+  //   { position: null, name: '', score: [] },
+  //   { position: null, name: '', score: [] },
+  //   { position: null, name: '', score: [] },
+  //   { position: null, name: '', score: [] },
   //   { position: null, name: '', score: [] },
   //   { position: null, name: '', score: [] },
   //   { position: null, name: '', score: [] },
   //   { position: null, name: '', score: [] }
   // ]
 
-  // loop as many times as width times the width to fill the grid
+  //! FUNCTIONS
+
   Array(width * width).join('.').split('.').forEach(() => {
-    //! create 
     const square = document.createElement('div')
     square.classList.add('grid-item')
     squares.push(square)
@@ -97,6 +130,12 @@ function init() {
     clear()
   }
 
+  function scoreSubmit(e) {
+    if (e.target.classList.contains('score-submit')) {
+      storeScores()
+    }
+  }
+
   // places snake at the starting position when grid has finished building
   snakeArray.map(index => squares[index].classList.add('snake'))
   function move(e) {
@@ -134,7 +173,7 @@ function init() {
     score.innerHTML = 'Score:' + ' ' + (scoreTally += 10)
     squares[snakeArray[0]].classList.remove('food')
     snakeArray.push(snakeArray.length)
-    // biteSound.play()
+    biteSound.play()
     food()
   }
 
@@ -157,7 +196,7 @@ function init() {
       } if (squares[snakeArray[0]].classList.contains('food')) {
         foodEaten()
         snakeSpeedUp()
-      } 
+      }
     }
   }
 
@@ -257,6 +296,7 @@ function init() {
   window.addEventListener('keydown', move)
   window.addEventListener('click', pauseGame)
   window.addEventListener('click', restartGame)
+  window.addEventListener('click', scoreSubmit)
 }
 window.addEventListener('DOMContentLoaded', init)
 

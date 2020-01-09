@@ -8,22 +8,61 @@ html, body {
   height: 100vh;
 }
 
+body {
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  background-color: #F9F8F8;
+}
+
+div.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: #F9F8F8;
+  ;
+}
+
+div.snake-title {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+div.left {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  /* background-color: #F9F8F8; */
+}
+
+div.leader-board {
+  width: 300px;
+  height: 520px;
+  border: #3A5A40 5px solid;
+  border-radius: 10px;
+  background-color: #3A5A40;
+  padding: 10px;
+}
+
+div.right {
+  display: flex;
+  justify-content: flex-end center;
+  align-content: center;
+  align-items: center;
+  /* background-color: #F9F8F8; */
+}
+
 h1 {
   font-family: 'Audiowide', cursive;
   font: bolder;
-  font-size: 80px;
-  margin: 10px;
-}
-
-body {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  background-color: #A3B18A;
+  font-size: 100px;
+  margin: 5px;
 }
 
 div.snake1-container {
-  width: 650px;
+  width: 520px;
   height: 650px;
   display: flex;
   flex-wrap: wrap;
@@ -31,7 +70,6 @@ div.snake1-container {
   align-content: center;
   align-items: center;
   position: relative;
-  /* background-color: #3A5A40; */
 }
 
 div.grid {
@@ -53,14 +91,14 @@ div.grid-item {
 
 div.game-over {
   width: 400px;
-  height: 200px;
+  height: 300px;
   background-color: greenyellow;
   border-right: black solid 10px;
   border-bottom: black solid 10px;
   border-radius: 5mm;
   position: absolute;
   text-align: center;
-  display: none; 
+  display: none;
   padding-top: 30px;
 }
 
@@ -71,24 +109,42 @@ h2 {
   margin: 0;
 }
 
-/* div.game-over.snakey {
-  background-color: greenyellow;
-  background-image: url('../assets/game-over.png');
-  height: 50px;
-  width: 10px;
-} */
-
 div.score-tally {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  margin-top: 10px;
   width: 515px;
   height: 100px;
   font-family: 'Audiowide', cursive;
   color: black;
   font-size: 30px;
   font-weight: 1000;
+}
+
+button.score-submit {
+  background-color: greenyellow;
+  font-family: 'Audiowide', cursive;
+  color: black;
+  font-weight: 1000;
+  font-size: 20px;
+  box-shadow: 9px 9px 9px #999;
+  border-radius: 2mm;
+  width: 170px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+button.score-submit:hover {
+  background-color: #3e8e41
+}
+
+button.score-submit:active {
+  background-color: #3e8e41;
+  box-shadow: 5px 5px 5px #666;
+  transform: translateY(4px);
 }
 
 button.play-again {
@@ -99,14 +155,16 @@ button.play-again {
   font-size: 20px;
   box-shadow: 9px 9px 9px #999;
   border-radius: 2mm;
-  width: 150px;
+  width: 170px;
   margin-top: 10px;
   margin-bottom: 10px;
   cursor: pointer;
   outline: none;
 }
 
-button.play-again:hover {background-color: #3e8e41}
+button.play-again:hover {
+  background-color: #3e8e41
+}
 
 button.play-again:active {
   background-color: #3e8e41;
@@ -130,7 +188,9 @@ button.pause-game {
   display: block;
 }
 
-button.pause-game:hover {background-color: #3e8e41}
+button.pause-game:hover {
+  background-color: #3e8e41
+}
 
 button.pause-game:active {
   background-color: #3e8e41;
@@ -175,4 +235,40 @@ div.grid-item.food {
 div.grid-item.grass {
   background-image: url('../assets/grass.png');
   background-size: contain;
+}
+
+@media only screen and (max-width: 840px) {
+  div.container {
+    flex-direction: column-reverse;
+    width: 500px;
+  }
+
+  div.snake-title {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+
+  div.grid {
+    width: 430px;
+    height: 430px;
+    display: flex;
+    flex-wrap: wrap;
+    border: #3A5A40 5px solid;
+    border-radius: 10px;
+    background-color: #3A5A40;
+  }
+  
+  div.grid-item {
+    width: 28px;
+    height: 28px;
+    background-color: #3A5A40;
+  }
+
+  div.left {
+    justify-content: center;
+  }
+  div.right {
+    justify-content: center;
+  }
 }
