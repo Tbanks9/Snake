@@ -40,18 +40,18 @@ div.left {
 }
 
 div.leader-board {
-  width: 400px;
-  height: 270px;
-  border: #588157 5px solid;
+  width: 350px;
+  height: 300px;
+  border: #3F3F37 5px solid;
   border-radius: 10px;
-  background-color: #588157;
-  margin-left: 100px;
+  background-color: #3F3F37;
+  margin-left: 140px;
   margin-bottom: 20px;
 }
 
 div.high-score {
   font-family: 'Audiowide', cursive;
-  color: black;
+  color: #E26D5A;
   font-size: 50px;
   margin: 0;
   text-align: center;
@@ -105,9 +105,9 @@ div.grid-item {
 div.game-over {
   width: 400px;
   height: 300px;
-  background-color: greenyellow;
-  border-right: black solid 10px;
-  border-bottom: black solid 10px;
+  background-color: #3F3F37;
+  border-right: #3F3F37 10px;
+  border-bottom: #3F3F37 10px;
   border-radius: 5mm;
   position: absolute;
   text-align: center;
@@ -140,22 +140,26 @@ h3 {
 
 div.score-tally {
   display: flex;
+  border: 5px solid #E26D5A;
+  border-radius: 10px;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   width: 350px;
-  height: 180px;
+  height: 200px;
+  background-color: #E26D5A;
   font-family: 'Audiowide', cursive;
   color: black;
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 1000;
-  margin-left: 120px;
+  text-align: center;
+  margin-left: 140px;
 }
 
 button.score-submit {
-  background-color: greenyellow;
+  background-color: #E26D5A;
   font-family: 'Audiowide', cursive;
-  color: black;
+  color: #F9F8F8;
   font-weight: 1000;
   font-size: 20px;
   box-shadow: 9px 9px 9px #999;
@@ -169,19 +173,19 @@ button.score-submit {
 }
 
 button.score-submit:hover {
-  background-color: #3e8e41
+  background-color: black
 }
 
 button.score-submit:active {
-  background-color: #3e8e41;
+  background-color: black;
   box-shadow: 5px 5px 5px #666;
   transform: translateY(4px);
 }
 
 button.play-again {
-  background-color: greenyellow;
+  background-color: #E26D5A;
   font-family: 'Audiowide', cursive;
-  color: black;
+  color: #F9F8F8;
   font-weight: 1000;
   font-size: 20px;
   box-shadow: 9px 9px 9px #999;
@@ -194,19 +198,19 @@ button.play-again {
 }
 
 button.play-again:hover {
-  background-color: #3e8e41
+  background-color: black
 }
 
 button.play-again:active {
-  background-color: #3e8e41;
+  background-color: black;
   box-shadow: 5px 5px 5px #666;
   transform: translateY(4px);
 }
 
 button.pause-game {
-  background-color: greenyellow;
+  background-color: #3F3F37;
   font-family: 'Audiowide', cursive;
-  color: black;
+  color: #F9F8F8;
   font-weight: 1000;
   font-size: 20px;
   border-radius: 3mm;
@@ -220,11 +224,11 @@ button.pause-game {
 }
 
 button.pause-game:hover {
-  background-color: #3e8e41
+  background-color: black;
 }
 
 button.pause-game:active {
-  background-color: #3e8e41;
+  background-color: black;
   box-shadow: 5px 5px 5px #666;
   transform: translateY(4px);
 }
@@ -237,7 +241,7 @@ div.paused {
   width: 515px;
   height: 300px;
   font-family: 'Audiowide', cursive;
-  color: white;
+  color: #F9F8F8;
   font-size: 25px;
   font-weight: 1000;
   position: absolute;
@@ -252,13 +256,13 @@ p {
 
 div.grid-item.snake {
   background-repeat: no-repeat;
-  background: black;
+  background: black!important;
   border: #3A5A40 solid 1px;
   border-radius: 10px;
 }
 
 div.grid-item.food {
-  background-image: url('../assets/food.png');
+  background-image: url('../assets/food.png')!important;
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -268,9 +272,13 @@ div.grid-item.grass {
   background-size: contain;
 }
 
-@media only screen and (max-width: 840px) {
+/* 1200px */
+@media only screen and (max-width: 700px) { 
+body {
+  display: flex;
+  justify-content: center;
+}
   div.container {
-    flex-direction: column-reverse;
     width: 500px;
     height: 450px;
   }
@@ -308,7 +316,6 @@ div.grid-item.grass {
     justify-content: center;
     align-content: center;
     align-items: center;
-    position: relative;
   }
 
   div.score-tally {

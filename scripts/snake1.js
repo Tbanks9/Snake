@@ -1,6 +1,7 @@
 function init() {
 
   //! DOM variables
+
   const grid = document.querySelector('.grid')
   const score = document.querySelector('.tally')
   const loser = document.querySelector('.game-over')
@@ -10,8 +11,12 @@ function init() {
   const squares = []
 
   //! Game variables
+
   const width = 15
   const biteSound = new Audio('sounds/bite.wav')
+  const gameEnd = new Audio('sounds/gameover.wav')
+  const playAgain = new Audio('sounds/playagain.wav')
+  const hiScore = new Audio('sounds/highscore.wav')
   let playerIndex = 108
   let snakeArray = [playerIndex, 107, 106]
   let foodStartIndex = 112
@@ -22,14 +27,13 @@ function init() {
   let interval = 150
   let scoreTally = 0
 
-  //! Create your variables to get your data from local storage 
+  //! Variables to get your data from local storage 
 
-  // The first one allows you to get the data from local storage so that you can manipulate it however you need to and returns null if there is no data available in local storage
   let storedHighScore = localStorage.getItem('storedHighScore') ? JSON.parse(localStorage.getItem('storedHighScore')) : null
-  // The second one gives you a copy of that data which you can display in the browser however you choose to
   const data = JSON.parse(localStorage.getItem('storedHighScore'))
 
-  // Function to set up your page to display your high score  
+  //! Functions to display highest score
+
   function highScoreCreate() {
     const highScore = document.createElement('div')
     highScore.classList.add('high-score')
@@ -37,24 +41,20 @@ function init() {
     eachScore.appendChild(highScore)
   }
 
-  // Function to store your score into local storage - it's up to you at what point in the game to call this function
   function storeScores() {
-    if (scoreTally > storedHighScore) { // if the current points value is higher than the value stored in local storage
-      storedHighScore = scoreTally // assign storedHighScore to equal the current value of points
-      localStorage.setItem('storedHighScore', JSON.stringify(storedHighScore)) // set storedHighScore into local storage
-      // this is a key value pair - you are setting the key above and then giving it the value of your latest high score
-      highScoreCreate() // this will enable you to display the score immediately if needed
+    if (scoreTally > storedHighScore) {
+      storedHighScore = scoreTally
+      localStorage.setItem('storedHighScore', JSON.stringify(storedHighScore))
+      highScoreCreate()
     }
   }
-  // Create a function to check if there is any data in local storage when the page is loaded, if so - 
-  // display this data using the highScoreCreate function, otherwise - do nothing.
-  // Invoke this function immediately so that it is run as soon as the DOM content is loaded   
+
   function displayHighScore() {
     data ? highScoreCreate(data) : null
   }
   displayHighScore()
 
-  //! FUNCTIONS
+  //! Functions
 
   Array(width * width).join('.').split('.').forEach(() => {
     const square = document.createElement('div')
@@ -92,6 +92,7 @@ function init() {
       squares[foodStartIndex].classList.add('food')
       interval = 150
       window.addEventListener('keydown', move)
+      playAgain.play()
     }
   }
 
@@ -114,16 +115,17 @@ function init() {
     squares.map(square => square.classList.remove('food'))
     window.removeEventListener('keydown', move)
     clear()
+    gameEnd.play()
   }
 
   function scoreSubmit(e) {
     if (e.target.classList.contains('score-submit')) {
       console.log('submitted score')
       storeScores()
+      hiScore.play()
     }
   }
 
-  // places snake at the starting position when grid has finished building
   snakeArray.map(index => squares[index].classList.add('snake'))
   function move(e) {
     if (e.keyCode === 39) {
@@ -147,7 +149,7 @@ function init() {
   }
   squares[foodStartIndex].classList.add('food')
   score.innerHTML = 'Score:' + ' ' + (scoreTally)
-  // grass()
+  grass()
 
   function snakeSpeedUp() {
     console.log('snake speed up')
@@ -266,18 +268,14 @@ function init() {
     }
   }
 
-  // function grass() {
-  //   const randomGrass = new Set()
-  //   while (randomGrass.size < 40) {
-  //     const grassGenerator = Math.floor(Math.random() * 225)
-  //     randomGrass.add(grassGenerator)
-  //     if (!squares[grassGenerator].classList.contains('food')) {
-  //       squares[grassGenerator].classList.add('grass')
-  //     } else {
-  //       grassGenerator
-  //     }
-  //   }
-  // }
+  function grass() {
+    const randomGrass = new Set()
+    while (randomGrass.size < 80) {
+      const grassGenerator = Math.floor(Math.random() * 225)
+      randomGrass.add(grassGenerator)
+      squares[grassGenerator].classList.add('grass')
+    }
+  }
 
   //! EVENT HANDLERS
   window.addEventListener('keydown', move)
@@ -287,6 +285,9 @@ function init() {
 }
 window.addEventListener('DOMContentLoaded', init)
 
+
+
+//! Object draft for creating leadership table
 
 // userName.addEventListener('keyup', () => {
 //   scoreSubmit.disabled = !userName.value
