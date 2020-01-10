@@ -20,6 +20,7 @@ div.container {
   flex-direction: row;
   justify-content: space-evenly;
   background-color: #F9F8F8;
+
 }
 
 div.snake-title {
@@ -70,6 +71,7 @@ h1 {
   font-family: 'Audiowide', cursive;
   font: bolder;
   font-size: 100px;
+  text-decoration: underline;
   margin: 0;
   padding: 0;
 }
@@ -106,8 +108,8 @@ div.game-over {
   width: 400px;
   height: 300px;
   background-color: #3F3F37;
-  border-right: #3F3F37 10px;
-  border-bottom: #3F3F37 10px;
+  border-right: black solid 10px;
+  border-bottom: black solid 10px;
   border-radius: 5mm;
   position: absolute;
   text-align: center;
@@ -162,7 +164,7 @@ button.score-submit {
   color: #F9F8F8;
   font-weight: 1000;
   font-size: 20px;
-  box-shadow: 9px 9px 9px #999;
+  box-shadow: 9px 9px 9px black;
   border-radius: 2mm;
   width: 170px;
   margin-top: 15px;
@@ -188,7 +190,7 @@ button.play-again {
   color: #F9F8F8;
   font-weight: 1000;
   font-size: 20px;
-  box-shadow: 9px 9px 9px #999;
+  box-shadow: 9px 9px 9px black;
   border-radius: 2mm;
   width: 170px;
   margin-top: 15px;
@@ -217,7 +219,7 @@ button.pause-game {
   width: 220px;
   margin-top: 10px;
   margin-bottom: 10px;
-  box-shadow: 9px 9px 9px #999;
+  box-shadow: 9px 9px 9px black;
   cursor: pointer;
   outline: none;
   display: block;
