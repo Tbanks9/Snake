@@ -26,7 +26,6 @@ function init() {
 
   // The first one allows you to get the data from local storage so that you can manipulate it however you need to and returns null if there is no data available in local storage
   let storedHighScore = localStorage.getItem('storedHighScore') ? JSON.parse(localStorage.getItem('storedHighScore')) : null
-
   // The second one gives you a copy of that data which you can display in the browser however you choose to
   const data = JSON.parse(localStorage.getItem('storedHighScore'))
 
@@ -54,19 +53,6 @@ function init() {
     data ? highScoreCreate(data) : null
   }
   displayHighScore()
-
-  // let highScoreList = [
-  //   { position: null, name: '', score: [] },
-  //   { position: null, name: '', score: [] },
-  //   { position: null, name: '', score: [] },
-  //   { position: null, name: '', score: [] },
-  //   { position: null, name: '', score: [] },
-  //   { position: null, name: '', score: [] },
-  //   { position: null, name: '', score: [] },
-  //   { position: null, name: '', score: [] },
-  //   { position: null, name: '', score: [] },
-  //   { position: null, name: '', score: [] }
-  // ]
 
   //! FUNCTIONS
 
@@ -132,6 +118,7 @@ function init() {
 
   function scoreSubmit(e) {
     if (e.target.classList.contains('score-submit')) {
+      console.log('submitted score')
       storeScores()
     }
   }
@@ -301,45 +288,25 @@ function init() {
 window.addEventListener('DOMContentLoaded', init)
 
 
-//TODO: Switch version for move function
-// snakeArray.map(index => squares[index].classList.add('snake'))
-// function move(e) {
-//   switch (e.keyCode) {
-//     case 39:
-//       if (playerIndex % width < width - 1) {
-//         playerIndex++
-//         clear()
-//         snakeRight = setInterval(moveRight, interval)
-//         console.log('move right')
-//       }
-//       break
-//     case 37:
-//       if (playerIndex % width > 0) {
-//         playerIndex--
-//         clear()
-//         snakeRight = setInterval(moveLeft, interval)
-//         console.log('move left')
-//       }
-//       break
-//     case 40:
-//       if (playerIndex + width < width * width) {
-//         playerIndex += width
-//         clear()
-//         snakeRight = setInterval(moveDown, interval)
-//         console.log('move down')
-//       }
-//       break
-//     case 38:
-//       if (playerIndex - width >= 0) {
-//         playerIndex -= width
-//         clear()
-//         snakeRight = setInterval(moveUp, interval)
-//         console.log('move up')
-//       }
-//       break
-//     default:
-//       console.log('player shouldnt move')
+// userName.addEventListener('keyup', () => {
+//   scoreSubmit.disabled = !userName.value
+// })
+
+// const userName = document.querySelector('.username')
+// const mostRecentScore = localStorage.getItem('mostRecentScore')
+// const maxHighScore = 10
+
+// saveHighScore = e => {
+//   console.log('clicked save')
+//   e.preventDefault()
+//   const hiScore = {
+//     hiScore: mostRecentScore,
+//     name: userName.value
 //   }
+//   data.push(hiScore)
+//   data.sort((a, b) => b.hiScore - a.hiScore)
+//   data.splice(10)
+//   console.log(data)
+
+//   localStorage.setItem('storedHighScore', JSON.stringify(data))
 // }
-// squares[foodStartIndex].classList.add('food')
-// score.innerHTML = 'Score:' + ' ' + (scoreTally)

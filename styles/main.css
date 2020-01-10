@@ -20,37 +20,49 @@ div.container {
   flex-direction: row;
   justify-content: space-evenly;
   background-color: #F9F8F8;
-  ;
 }
 
 div.snake-title {
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
-  padding-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 div.left {
   display: flex;
-  justify-content: flex-start;
-  flex-wrap: nowrap;
+  width: 400px;
+  justify-content: center;
+  /* margin-left: 100px; */
+  flex-direction: column;
   /* background-color: #F9F8F8; */
 }
 
 div.leader-board {
-  width: 300px;
-  height: 520px;
-  border: #3A5A40 5px solid;
+  width: 400px;
+  height: 270px;
+  border: #588157 5px solid;
   border-radius: 10px;
-  background-color: #3A5A40;
-  padding: 10px;
+  background-color: #588157;
+  margin-left: 100px;
+  margin-bottom: 20px;
+}
+
+div.high-score {
+  font-family: 'Audiowide', cursive;
+  color: black;
+  font-size: 50px;
+  margin: 0;
+  text-align: center;
 }
 
 div.right {
   display: flex;
-  justify-content: flex-end center;
+  justify-content: flex-start;
   align-content: center;
   align-items: center;
+  margin-right: 60px;
   /* background-color: #F9F8F8; */
 }
 
@@ -58,12 +70,13 @@ h1 {
   font-family: 'Audiowide', cursive;
   font: bolder;
   font-size: 100px;
-  margin: 5px;
+  margin: 0;
+  padding: 0;
 }
 
 div.snake1-container {
   width: 520px;
-  height: 650px;
+  height: 600px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -77,16 +90,16 @@ div.grid {
   height: 520px;
   display: flex;
   flex-wrap: wrap;
-  border: #3A5A40 5px solid;
+  border: #588157 5px solid;
   border-radius: 10px;
-  background-color: #3A5A40;
+  background-color: #588157;
 }
 
 div.grid-item {
   width: 34px;
   height: 34px;
   /* border: 1px solid grey; */
-  background-color: #3A5A40;
+  background-color: #588157;
 }
 
 div.game-over {
@@ -102,23 +115,41 @@ div.game-over {
   padding-top: 30px;
 }
 
+div.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+
 h2 {
   font-family: 'Audiowide', cursive;
   color: #F9F8F8;
-  font-size: 40px;
+  font-size: 50px;
   margin: 0;
+  padding-bottom: 10px;
+}
+
+h3 {
+  font-family: 'Audiowide', cursive;
+  color: #F9F8F8;
+  font-size: 50px;
+  margin: 20px;
+  text-align: center;
 }
 
 div.score-tally {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  width: 515px;
-  height: 100px;
+  width: 350px;
+  height: 180px;
   font-family: 'Audiowide', cursive;
   color: black;
-  font-size: 30px;
+  font-size: 50px;
   font-weight: 1000;
+  margin-left: 120px;
 }
 
 button.score-submit {
@@ -130,8 +161,8 @@ button.score-submit {
   box-shadow: 9px 9px 9px #999;
   border-radius: 2mm;
   width: 170px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   padding: 0;
   cursor: pointer;
   outline: none;
@@ -156,8 +187,8 @@ button.play-again {
   box-shadow: 9px 9px 9px #999;
   border-radius: 2mm;
   width: 170px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   cursor: pointer;
   outline: none;
 }
@@ -241,14 +272,15 @@ div.grid-item.grass {
   div.container {
     flex-direction: column-reverse;
     width: 500px;
+    height: 450px;
   }
-
   div.snake-title {
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
+    margin-top: 0;
+    margin-bottom: 40px;
   }
-
   div.grid {
     width: 430px;
     height: 430px;
@@ -258,17 +290,40 @@ div.grid-item.grass {
     border-radius: 10px;
     background-color: #3A5A40;
   }
-  
   div.grid-item {
     width: 28px;
     height: 28px;
     background-color: #3A5A40;
   }
-
   div.left {
-    justify-content: center;
+    display: none;
   }
   div.right {
     justify-content: center;
+    margin: 0;
+  }
+  div.snake1-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  div.score-tally {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 515px;
+    height: 100px;
+    font-family: 'Audiowide', cursive;
+    color: black;
+    font-size: 30px;
+    font-weight: 1000;
+  }
+
+  button.score-submit {
+    display: none;
   }
 }

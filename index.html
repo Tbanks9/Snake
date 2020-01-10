@@ -11,41 +11,52 @@
 
 <body>
   <div class="snake-title">
-    <h1>snake</h1>
+    <h1>SNAKE</h1>
   </div>
   <div class="container">
     <div class="left">
       <div class="leader-board">
-        <h2>High Scores</h2>
-        <ul class="highScoreList"></ul>
+        <h3>Highest score</h3>
+        <div class="highScoreList">
+        </div>
+      </div>
+      <div class="score-tally">
+        <div class="tally">
+        </div>
+        <button class="pause-game">
+          <p>Pause game</p>
+        </button>
       </div>
     </div>
     <div class="right">
       <div class="snake1-container">
         <div class="game-over">
           <h2>GAME-OVER<h2>
-              <form>
+              <!-- <form>
                 <div class="username">
-                  <input type="text" name="userName" placeholder="Player Name">
-                </div>
-                  <button class="score-submit" type="button"><p>Submit Score</p></button>
-              </form>
-              <button class="play-again">
-                <p>Play again?</p>
-              </button>
+                  <input type="text" name="userName" placeholder="Player name">
+                </div> -->
+              <div class="buttons">
+                <button class="score-submit" type="button">
+                  <p>Submit score</p>
+                </button>
+                <button class="play-again">
+                  <p>Play again?</p>
+                </button>
+              </div>
         </div>
         <div class="grid">
         </div>
         <div class="paused">
           <p>Press any arrow key to resume</p>
         </div>
-        <div class="score-tally">
+        <!-- <div class="score-tally">
           <div class="tally">
           </div>
           <button class="pause-game">
-            <p>Pause Game</p>
+            <p>Pause game</p>
           </button>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

@@ -235,3 +235,48 @@
 //   window.addEventListener('click', restartGame)
 // }
 // window.addEventListener('DOMContentLoaded', init)
+
+
+
+//TODO: Switch version for move function
+// snakeArray.map(index => squares[index].classList.add('snake'))
+// function move(e) {
+//   switch (e.keyCode) {
+//     case 39:
+//       if (playerIndex % width < width - 1) {
+//         playerIndex++
+//         clear()
+//         snakeRight = setInterval(moveRight, interval)
+//         console.log('move right')
+//       }
+//       break
+//     case 37:
+//       if (playerIndex % width > 0) {
+//         playerIndex--
+//         clear()
+//         snakeRight = setInterval(moveLeft, interval)
+//         console.log('move left')
+//       }
+//       break
+//     case 40:
+//       if (playerIndex + width < width * width) {
+//         playerIndex += width
+//         clear()
+//         snakeRight = setInterval(moveDown, interval)
+//         console.log('move down')
+//       }
+//       break
+//     case 38:
+//       if (playerIndex - width >= 0) {
+//         playerIndex -= width
+//         clear()
+//         snakeRight = setInterval(moveUp, interval)
+//         console.log('move up')
+//       }
+//       break
+//     default:
+//       console.log('player shouldnt move')
+//   }
+// }
+// squares[foodStartIndex].classList.add('food')
+// score.innerHTML = 'Score:' + ' ' + (scoreTally)
