@@ -100,9 +100,9 @@ function init() {
     squares[i].classList.add('leftWall')
   } for (let i = 14; i < squares.length; i += 15) {
     squares[i].classList.add('rightWall')
-  } for (let i = 0; i < 15; i++) { // Will figure out a less rubbish way of doing this
+  } for (let i = 0; i < 15; i++) { 
     squares[i].classList.add('topWall')
-  } for (let i = 210; i < 225; i++) { // Likewise here
+  } for (let i = 210; i < 225; i++) { 
     squares[i].classList.add('bottomWall')
   }
 
