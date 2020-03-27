@@ -284,30 +284,3 @@ function init() {
   window.addEventListener('click', scoreSubmit)
 }
 window.addEventListener('DOMContentLoaded', init)
-
-
-
-//! Object draft for creating leadership table
-
-// userName.addEventListener('keyup', () => {
-//   scoreSubmit.disabled = !userName.value
-// })
-
-// const userName = document.querySelector('.username')
-// const mostRecentScore = localStorage.getItem('mostRecentScore')
-// const maxHighScore = 10
-
-// saveHighScore = e => {
-//   console.log('clicked save')
-//   e.preventDefault()
-//   const hiScore = {
-//     hiScore: mostRecentScore,
-//     name: userName.value
-//   }
-//   data.push(hiScore)
-//   data.sort((a, b) => b.hiScore - a.hiScore)
-//   data.splice(10)
-//   console.log(data)
-
-//   localStorage.setItem('storedHighScore', JSON.stringify(data))
-// }
