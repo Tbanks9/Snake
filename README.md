@@ -21,7 +21,7 @@ This project is a browser version of the classic game Snake, built using Vanilla
 
 ## Deployment
 
-The game is deployed on GitHub Pages, and can be found here: https://tbanks9.github.io/Snake/
+The game is deployed on GitHub Pages, and can be found here: https://snake-project.herokuapp.com/
 
 ## Getting started
 
