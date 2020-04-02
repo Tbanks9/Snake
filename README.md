@@ -112,6 +112,13 @@ Once the game ends, the following is displayed:
 
 3. Some functions can be broken up (Move functions as seen in the above code snippet for example). I would ideally have the snake increasing size as its own function to avoid repeating code.
 
+## Wins
+
+Getting the snake to eat, grow and increase speed initially took a bit of time to wrap my head around, so I was thrilled when everything all of a sudden clicked. Overall a big win for me was being able to solidify my vanilla JavaScript knowledge, and build a game that was as much fun building as it is playing it.
+
+## Key Learnings
+
+A key learning for me was getting used to researching when you're unsure. I initially spent a couple days struggling by myself, and getting things done very slowly. I accepted that this was all still new territory for me, and that I was always going to run into problems that I hadn't yet come across as a developer.
 
 
 
