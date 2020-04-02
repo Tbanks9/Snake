@@ -21,7 +21,7 @@ This project is a browser version of the classic game Snake, built using Vanilla
 
 ## Deployment
 
-The game is deployed on GitHub Pages, and can be found here: https://snake-project.herokuapp.com/
+The game is deployed on Heroku, and can be found here: https://snake-project.herokuapp.com/
 
 ## Getting started
 
@@ -44,7 +44,7 @@ Below is an example code snippet for the following:
 * The food respawning elsewhere on the playing grid
 * The score tally increasing by 10 points each time the snake eats
 
-```
+``` javascript
   function snakeSpeedUp() {
     console.log('snake speed up')
     interval = (interval - 1)
@@ -114,7 +114,7 @@ Once the game ends, the following is displayed:
 
 ## Wins
 
-Getting the snake to eat, grow and increase speed initially took a bit of time to wrap my head around, so I was thrilled when everything all of a sudden clicked. Overall a big win for me was being able to solidify my vanilla JavaScript knowledge, and build a game that was as much fun building as it is playing it.
+Getting the snake to eat, grow and increase speed initially took a bit of time to wrap my head around, so I was thrilled when everything all of a sudden clicked. Overall, a big win for me was being able to solidify my vanilla JavaScript knowledge, and build a game that was as much fun building as it is playing it.
 
 ## Key Learnings
 
